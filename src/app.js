@@ -504,6 +504,8 @@ $(function () {
       // pending += 1;
     }
     console.log('%i) %cW%c', pending, style, '', data);
+    $('[data-route="axes"] [data-name="gcode"]').html(data);
+
     // var str = $('[data-route="axes"] [data-name="gcode"]').html();
     // var a = str.split('<br>');
     // a.push(data);
