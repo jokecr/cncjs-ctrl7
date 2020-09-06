@@ -6,14 +6,21 @@ $(function () {
   var busy = false;
   var prb = {};
   var bitSetterInit = {};
+  var msgStack = ['Init'];
   var step = 1.00;
   var tlo = 0;
+  function show(str) {
+    msgStack = msgStack.push(str).splice(-1, 8);
+    $('[data-route="axes"] [data-name="gcode"]').html(msgStack.join('<br>'));
+  }
+
   controller.commandQueue = async.queue(function (task, commandDone) {
     console.log(task);
     busy = true;
     console.log(`Start:${task.mode}:${task.data}`);
     if (task.mode == 'notify') {
-      $('[data-route="axes"] [data-name="gcode"]').html(task.data);
+      show(task.data);
+
       commandDone();
     }
     if (task.mode == 'gcode') {
@@ -454,6 +461,7 @@ $(function () {
       pending -= 1;
     }
     console.log('%i) %cR%c', pending, style, '', data);
+    show(data);
     if (data == 'ok') {
       return;
     }
@@ -504,8 +512,7 @@ $(function () {
       // pending += 1;
     }
     console.log('%i) %cW%c', pending, style, '', data);
-    $('[data-route="axes"] [data-name="gcode"]').html(data);
-
+    show(data);
     // var str = $('[data-route="axes"] [data-name="gcode"]').html();
     // var a = str.split('<br>');
     // a.push(data);
