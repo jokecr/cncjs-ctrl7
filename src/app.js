@@ -12,7 +12,7 @@ $(function () {
 
   function show(str) {
     msgStack.push(str);
-    msgStack = msgStack.splice(-1, 8);
+    msgStack.splice(0, msgStack.length - 8);
     $('[data-route="axes"] [data-name="gcode"]').html(msgStack.join('<br>'));
   }
   controller.commandQueue = async.queue(function (task, commandDone) {
