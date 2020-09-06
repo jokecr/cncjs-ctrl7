@@ -12,7 +12,7 @@ $(function () {
 
   function show(str) {
     var msg = '';
-    msgStack.unshift(str);
+    msgStack.push(str);
     msgStack.splice(0, msgStack.length - 20);
     msg = msgStack.join(', ').split('G90, ');
     msg.splice(0, msg.length - 4);
