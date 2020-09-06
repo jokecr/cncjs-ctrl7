@@ -550,11 +550,13 @@ $(function () {
     wpos.x = (wpos.x * factor).toFixed(digits);
     wpos.y = (wpos.y * factor).toFixed(digits);
     wpos.z = (wpos.z * factor).toFixed(digits);
-if(!canClick){
-  console.log('DISABLE BUTTONS');
-}
-$('[data-route="axes"] .control-pad').prop('disabled', !canClick);
-$('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
+    if (!canClick) {
+      console.log('DISABLE BUTTONS');
+    } else {
+      console.log('enable BUTTONS');
+    }
+    $('[data-route="axes"] .control-pad').prop('disabled', !canClick);
+    $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(activeState);
     $('[data-route="axes"] [data-name="mpos-label"]').text(mlabel);
     $('[data-route="axes"] [data-name="mpos-x"]').text(mpos.x);
