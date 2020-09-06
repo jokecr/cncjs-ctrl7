@@ -1,0 +1,233 @@
+.btn.btn-zero {
+    color: black;
+    font-size: 17px;
+    font-weight: bold;
+    width: 100%;
+}
+.btn-default {
+  color: hsla(0, 0%, 0%, 0.7);
+  background-color: hsla(0, 0%, 60%, 0.5);
+  border-color: #ccc;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+[data-route="workspace"] {
+  padding: 10px;
+}
+
+[data-route="connection"] {
+  padding: 10px;
+}
+
+[data-route="axes"] {
+  padding: 5px;
+  font-size: 14px;
+  bottom: 0;
+  position: absolute;
+  top: 0;
+}
+
+[data-route="axes"]>* {
+  margin-bottom: 5px;
+}
+
+[data-route="axes"]>*:last-child {
+  margin-bottom: 0;
+}
+
+[data-route="axes"] .dropdown-menu>li>a .fa {
+  width: 16px;
+}
+
+[data-route="axes"] .nav-panel .btn {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+[data-route="axes"] .nav-panel .row [class^="col-"],
+[data-route="axes"] .nav-panel .row [class*=" col-"] {
+  padding-right: 5px;
+}
+
+[data-route="axes"] .nav-panel .row [class^="col-"]:last-child,
+[data-route="axes"] .nav-panel .row [class*=" col-"]:last-child {
+  padding-right: 0;
+}
+
+[data-route="axes"] .active-state {
+  background-color: hsla(0, 0%, 0%, 0.5);
+  height: 48px;
+  font-size: x-large;
+  padding: 0 1em;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0px 2px hsla(0, 0%, 0%, 0.1), 1px 1px 0px 1px hsla(0, 0%, 100%, 0.15);
+}
+
+[data-route="axes"] .gcode {
+  background-color: hsla(0, 0%, 0%, 0.5);
+  height: 48px;
+  font-size: x-small;
+  padding: 0 1em;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0px 2px hsla(0, 0%, 0%, 0.1), 1px 1px 0px 1px hsla(0, 0%, 100%, 0.15);
+}
+
+[data-route="axes"] .axis-label {
+  font-size: 17px;
+  text-align: center;
+  background-color: hsla(0, 0%, 0%, 0.1);
+  margin: 1px 81px;
+  padding: 0;
+  border-radius: 12px;
+}
+
+[data-route="axes"] .axis-position {
+  text-align: right;
+  background-color: hsla(0, 0%, 0%, 0.5);
+  font-size: x-large;
+  margin: 2px 2px;
+  padding: 0 1em;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0px 2px hsla(0, 0%, 0%, 0.1), 1px 1px 0px 1px hsla(0, 0%, 100%, 0.15);
+}
+
+[data-route="axes"] .rotate-45deg {
+  transform: rotate(45deg);
+}
+
+[data-route="axes"] .rotate-45deg:before {
+  transform: rotate(45deg);
+}
+
+[data-route="axes"] .rotate--45deg {
+  transform: rotate(-45deg);
+}
+
+[data-route="axes"] .rotate--45deg:before {
+  transform: rotate(-45deg);
+}
+
+[data-route="axes"] .rotate-90deg {
+  transform: rotate(90deg);
+}
+
+[data-route="axes"] .rotate-90deg:before {
+  transform: rotate(90deg);
+}
+
+[data-route="axes"] .rotate--90deg {
+  transform: rotate(-90deg);
+}
+
+[data-route="axes"] .rotate--90deg:before {
+  transform: rotate(-90deg);
+}
+
+[data-route="axes"] .control-pad .row [class^="col-"],
+[data-route="axes"] .control-pad .row [class*=" col-"] {
+  padding-right: 5px;
+}
+
+[data-route="axes"] .control-pad .row [class^="col-"]:last-child,
+[data-route="axes"] .control-pad .row [class*=" col-"]:last-child {
+  padding-right: 0;
+}
+
+[data-route="axes"] .control-pad .row {
+  padding-bottom: 5px;
+}
+
+[data-route="axes"] .control-pad .row:last-child {
+  padding-bottom: 0;
+}
+
+[data-route="axes"] .control-pad .btn {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+[data-route="axes"] .form-control {
+    font-size: 26px;
+    font-weight: bold;
+    height: 71px;
+    box-shadow: 1px 1px 0 2px hsla(0, 0%, 50%, 0.5);
+    background-color: hsl(0,0%,13%);
+    color: hsl(210,30%,40%);
+}
+.tinyLabel {
+  font-size: small;
+  background-color: hsl(0, 0%, 90%);
+  margin: 0 10px;
+  border-radius: 3px;
+}
+
+[data-route="axes"] .control-pad .btn.jog {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  height: 71px;
+}
+
+.combo-axis {
+    background-color: hsla(46, 100%, 48%, 1.0);
+}
+.x-axis {
+  background-color: hsla(5, 100%, 70%, 1.0);
+}
+
+.y-axis {
+  background-color: hsla(120, 100%, 70%, 1.0);
+}
+
+.z-axis {
+  background-color: hsla(220, 100%, 70%, 1.0);
+}
+
+[data-route="axes"] .axis-position.x-axis {
+  background-color: hsla(5, 100%, 25%, 0.5);
+  color: hsla(5, 100%, 90%, 1.0);
+}
+
+[data-route="axes"] .axis-position.y-axis {
+  background-color: hsla(120, 100%, 25%, 0.5);
+  color: hsla(120, 100%, 90%, 1.0);
+}
+
+[data-route="axes"] .axis-position.z-axis {
+  background-color: hsla(220, 100%, 25%, 0.5);
+  color: hsla(220, 100%, 90%, 1.0);
+}
+
+.btn-default:focus {
+  color: hsla(0, 0%, 0%, 0.9);
+}
+
+.btn-default:focus.x-axis {
+  background-color: hsla(5, 100%, 70%, 1.0);
+}
+
+.btn-default:focus.y-axis {
+  background-color: hsla(120, 100%, 70%, 1.0);
+}
+
+.btn-default:focus.z-axis {
+  background-color: hsla(220, 100%, 70%, 1.0);
+}
+
+.btn-default:active.x-axis, .btn-default:active:hover.x-axis {
+  background-color: hsla(5, 50%, 50%, 1.0);
+  box-shadow: inset 0 0 23px 10px hsla(5, 100%, 30%, 1), 0 0 2px 3px hsla(5, 50%, 50%, 1);
+}
+
+.btn-default:active.y-axis, .btn-default:active:hover.y-axis {
+  background-color: hsla(120, 50%, 50%, 1.0);
+  box-shadow: inset 0 0 23px 10px hsla(120, 100%, 30%, 1), 0 0 2px 3px hsla(120, 50%, 50%, 1);
+}
+
+.btn-default:active.z-axis, .btn-default:active:hover.z-axis {
+  background-color: hsla(220, 50%, 50%, 1.0);
+  box-shadow: inset 0 0 23px 10px hsla(220, 100%, 30%, 1), 0 0 2px 3px hsla(220, 50%, 50%, 1);
+}

@@ -1,0 +1,29 @@
+{
+  "name": "cncjs-ctrl7",
+  "version": "1.0.0",
+  "description": "CND joggong interface for RasPi 7\" touch screen",
+  "homepage": "",
+  "author": "",
+  "bin": {},
+  "files": [],
+  "repository": {},
+  "license": "MIT",
+  "preferGlobal": true,
+  "scripts": {
+    "github-release": "github-release"
+  },
+  "keywords": [
+    "cncjs",
+    "raspberry",
+    "pi",
+    "cnc",
+    "pendant",
+    "tinyweb"
+  ],
+  "dependencies": {
+    "async": "^3.2.0"
+  },
+  "devDependencies": {
+    "github-release-cli": "^0.3.0"
+  }
+}

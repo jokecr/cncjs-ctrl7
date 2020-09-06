@@ -1,0 +1,74 @@
+sudo: required
+dist: trusty
+group: edge
+
+language: node_js
+
+os:
+  - linux
+
+node_js:
+  - '6'
+  - '5'
+  - '4'
+
+env:
+  global:
+    - secure: "V2zxBxm8+Fpq4AJ78L7k8RMqRTEYwmZrA3Xbd8sg/m9e+BPyK2P0fBLyT0t2ixLAEzROhihr7JBXLydmI7f2DYcjczkhRVewYPhhqUsee1IGgV9eEJTQLWPpT5SFMo7QOHxXozxy+IajOj9pzv5rIpMy9wQLD5/DujMPPn9DzbNr2t+KxBnMoQLfRBivPXrlgXDPEQEP16/hZE+/oKLetEosfiK2pjaCHP3qDHgYww3BDpC16n2uuXwneDNwM7+UGymIoolH5b8bSJtZPHo8sP753OtKj32IiID2TsPnv9YgMgE36y0R9bV2CvSzSSp9bE/nVt5G/cWbyvKsapTpH26cougbfNYNOwfFQVrzQiK+lhMT76Tf2R8SpTXjNDjGmKqEscSDMNUVkDIgxb7f2XB3Tjk5PTMoi9Gmxx3lgZ/rkBX8dgOhPczTjsBp+cO66uuqdNlZJoJhioNeJVKuVch7zzrQnPiQ2RMGCijaaPbpH6jFaf5zYh9xrFNyDq+4EqLfmKI44Zrbi9U5qdmTYDq2Vz69OKbcASPt9v60XcrOq4Xr+IMFNUOLuOvFau1u++WzEEcSCfo57kbDdvS+x9fYzZDUXwEto6Y1DkgxUGTmT6MSTrvy87KiVYXCEbtE0sCcG002Ujmf9HqTOVg1BJk40ccUibuq5cL/Xgb1MCA=" # GITHUB_TOKEN
+
+before_install:
+  - npm install -g npm
+  - npm --version
+
+install:
+  - npm install
+
+after_success:
+  - mkdir -p releases
+  - PACKAGE_NAME=`scripts/package-name.sh package.json`
+  - PACKAGE_VERSION=`scripts/package-version.sh package.json`
+  - RELEASE=${PACKAGE_NAME}-${PACKAGE_VERSION}
+  - COMMIT_LOG=`git log -1 --format='%ci %H %s'`
+  - COMMIT_HASH=`git log -1 --format="%h"`
+  - |
+    if [[ "$TRAVIS_NODE_VERSION" == "6" && "$TRAVIS_OS_NAME" == "linux" ]]; then
+      pushd releases;
+      ln -sf ../src ${RELEASE};
+      zip -r ${RELEASE}.zip ${RELEASE};
+      popd;
+      ls -al releases/*;
+      if [[ -z "$TRAVIS_TAG" ]]; then
+        mv "releases/${RELEASE}.zip" "releases/${RELEASE}-${COMMIT_HASH}.zip";
+        npm run github-release -- delete \
+          --owner=cncjs \
+          --repo=cncjs-pendant-tinyweb \
+          --tag="latest" \
+          --name="${TRAVIS_BRANCH}" \
+          "*.zip";
+        npm run github-release -- upload \
+          --owner=cncjs \
+          --repo=cncjs-pendant-tinyweb \
+          --tag="latest" \
+          --name="${TRAVIS_BRANCH}" \
+          --body="${COMMIT_LOG}" \
+          "releases/${RELEASE}-${COMMIT_HASH}.zip";
+      fi
+    fi
+
+before_deploy:
+  - echo "Deploying to GitHub releases"
+  - ls -al releases
+
+deploy:
+  provider: releases
+  api_key:
+    secure: "fBupQEzgrtyj1zr/Cz8PY54CsBB3YgToASh4z15d6Sg66D1FzR5deIj289v4MFdw1mH+/5dFWQOzvG2xn0X88TsBgpGz6hPj/u8hxLptw2F2Wf6cLQXaydBAvuTga3oxhz7MihBDH5DcWhvZ6L6HUgy11WxvaReOJns4ujfepdTBUocgrmrv4gVnIqKYG1aGBpEF4nXD+055m1OzSN2A/zmDHlKSFj3RvMAc1ehHrmvSTlpECGfRIjbx5MSfBVZSql0bkMVyH3uEfWhvnK7La386eo66sWziSNKSgMuWiX6ehiDoIdlNgKFEuXddnymPAn5RZ2RYNYUCf9yi2J8ugyZhPIQ7B+U99UOJgSIze+Bj80OAy/2Po7BkzFsdPT5bCYuzCzQtQl7g6JMJhErn/KSr1VkCynloUDkT+ho3W2CaoUD2xULfRTY+6t0dWqWugHBwJrCUqrVVw6MhHapinluf+oqsCqXb0sI9Zpj4tdtZmmD0QjATPqykPE1X+yG61GPa7zzynqNKc3XaXksBPG1uZ6Q95QLyj/j69xQVwhfVosmTdUeHNhPv2kWGpVFnIyy/rPsCQzhgUJ4QEc6nR4wEnB+uJcIOacGW/D213pOIs9GEIGmhnZZNBxVtKfIJb3dhZLTG+kL9xDO/lZW1ZEx4pbWwiZd5WHIGstzTI+Q="
+  file_glob: true
+  file:
+    - 'releases/*.*'
+  overwrite: true
+  skip_cleanup: true
+  on:
+    # https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on
+    tags: true  # Deploy app only when a tag is applied to the commit
+    node: '6'
