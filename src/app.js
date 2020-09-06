@@ -591,6 +591,7 @@ $(function () {
     var IDLE = 'Idle',
       RUN = 'Run';
     var canClick = [IDLE, RUN].indexOf(activeState) >= 0;
+    $('[data-route="axes"] .control-pad').prop('disabled', !canClick);
     $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(activeState);
     $('[data-route="axes"] [data-name="mpos-x"]').text(mpos.x);
