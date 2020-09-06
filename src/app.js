@@ -650,6 +650,7 @@ $(function () {
       wpos.y = Number(wpos.y).toFixed(3);
       wpos.z = Number(wpos.z).toFixed(3);
     }
+    $('[data-route="axes"] .control-pad').prop('disabled', !canClick);
     $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(stateText);
     $('[data-route="axes"] [data-name="mpos-label"]').text(mlabel);
