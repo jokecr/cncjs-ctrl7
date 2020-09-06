@@ -78,6 +78,67 @@
     </div>
   </div>
   <div class="hidden" data-route="axes">
+    <div class="nav-panel">
+      <div class="container-fluid">
+        <div class="row no-gutter">
+          <div class="col-xs-2">
+            <div class="btn-group btn-group-justified">
+              <div class="btn-group">
+                <div class="dropdown">
+                  <button type="button" class="btn btn-default" data-name="btn-dropdown" data-toggle="dropdown">
+                    <i class="fa fa-list"></i>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                      <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('homing')"><i class="fa fa-home"></i>&nbsp;Homing</a>
+                    </li>
+                    <li class="sleep">
+                      <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('gcode', '$SLP')"><i class="fa fa-bed"></i>&nbsp;Sleep</a>
+                    </li>
+                    <li class="unlock">
+                      <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('unlock')"><i class="fa fa-unlock-alt"></i>&nbsp;Unlock</a>
+                    </li>
+                    <li>
+                      <a role="menuitem" href="javascript:void(0)" onclick="cnc.controller.command('reset')"><i class="fa fa-undo"></i>&nbsp;Reset</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                      <a role="menuitem" href="#/workspace"><i class="fa fa-chevron-left"></i>&nbsp;Back</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="active-state" data-name="active-state"></div>
+          </div>
+          <div class="col-xs-4">
+            <div class="gcode" data-name="gcode">gcode</div>
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="btn btn-default cyclestart" onclick="cnc.controller.command('cyclestart')">
+              CS
+            </button>
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="btn btn-default feedhold" onclick="cnc.controller.command('feedhold')">
+              FH
+            </button>
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="btn btn-default cyclestart" onclick="cnc.controller.command('start')">
+              <i class="fa fa-play"></i>
+            </button>
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="btn btn-default feedhold" onclick="cnc.controller.command('pause')">
+              <i class="fa fa-pause"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="axis-position-row">
       <div class="container-fluid">
         <div class="row no-gutter">
@@ -162,6 +223,14 @@
             </button>
           </div>
           <div class="col-xs-2">
+            <select class="form-control" data-name="select-distance">
+              <option>0.025</option>
+              <option>0.100</option>
+              <option>1.000</option>
+              <option>10.0</option>
+              <option>50.0</option>
+              <option>100.0</option>
+            </select>
           </div>
           <div class="col-xs-2">
             <button type="button" class="btn jog btn-default jog-x-plus x-axis" title="Move X+" onclick="cnc.sendMove('X+')">
@@ -230,13 +299,6 @@
           </div>
 
           <div class="col-xs-1">
-            <select class="form-control" data-name="select-distance">
-              <option>0.025</option>
-              <option>0.100</option>
-              <option>1.000</option>
-              <option>10.0</option>
-            </select>
-
           </div>
           <div class="col-xs-1">
             <button type="button" class="btn btn-default reload" title="Reload" onclick="location.reload();">
