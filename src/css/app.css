@@ -1,3 +1,8 @@
+.ProgramColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
 .btn.btn-zero {
     color: black;
     font-size: 17px;

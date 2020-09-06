@@ -111,43 +111,43 @@
         <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1006.nc')">
           1006
         </button>
-      </div>
-      <div class="col-xs-10 JogColumn">
-        <div class="row no-gutter">
-          <div class="col-xs-4">
-            <div class="axis-position x-axis" data-name="mpos-x">0.000</div>
+        <div class="col-xs-10 JogColumn">
+          <div class="row no-gutter">
+            <div class="col-xs-4">
+              <div class="axis-position x-axis" data-name="mpos-x">0.000</div>
+            </div>
+            <div class="col-xs-4">
+              <div class="axis-position y-axis" data-name="mpos-y">0.000</div>
+            </div>
+            <div class="col-xs-4">
+              <div class="axis-position z-axis" data-name="mpos-z">0.000</div>
+            </div>
           </div>
-          <div class="col-xs-4">
-            <div class="axis-position y-axis" data-name="mpos-y">0.000</div>
-          </div>
-          <div class="col-xs-4">
-            <div class="axis-position z-axis" data-name="mpos-z">0.000</div>
-          </div>
-        </div>
-        <div class="row no-gutter">
-          <div class="col-xs-1">
-            <button type="button" class="btn btn-zero x-axis" title="G10 L20 P1 X0" onclick="cnc.controller.command('gcode', 'G10 L20 X0')">
-              0
-            </button>
-          </div>
-          <div class="col-xs-3">
-            <div class="axis-position x-axis" data-name="wpos-x">0.000</div>
-          </div>
-          <div class="col-xs-1">
-            <button type="button" class="btn btn-zero y-axis" title="G10 L20 P1 Y0" onclick="cnc.controller.command('gcode', 'G10 L20 Y0')">
-              0
-            </button>
-          </div>
-          <div class="col-xs-3">
-            <div class="axis-position y-axis" data-name="wpos-y">0.000</div>
-          </div>
-          <div class="col-xs-1">
-            <button type="button" class="btn btn-zero z-axis" title="G10 L20 P1 Z0" onclick="cnc.controller.command('gcode', 'G10 L20 Z0')">
-              0
-            </button>
-          </div>
-          <div class="col-xs-3">
-            <div class="axis-position z-axis" data-name="wpos-z">0.000</div>
+          <div class="row no-gutter">
+            <div class="col-xs-1">
+              <button type="button" class="btn btn-zero x-axis" title="G10 L20 P1 X0" onclick="cnc.controller.command('gcode', 'G10 L20 X0')">
+                0
+              </button>
+            </div>
+            <div class="col-xs-3">
+              <div class="axis-position x-axis" data-name="wpos-x">0.000</div>
+            </div>
+            <div class="col-xs-1">
+              <button type="button" class="btn btn-zero y-axis" title="G10 L20 P1 Y0" onclick="cnc.controller.command('gcode', 'G10 L20 Y0')">
+                0
+              </button>
+            </div>
+            <div class="col-xs-3">
+              <div class="axis-position y-axis" data-name="wpos-y">0.000</div>
+            </div>
+            <div class="col-xs-1">
+              <button type="button" class="btn btn-zero z-axis" title="G10 L20 P1 Z0" onclick="cnc.controller.command('gcode', 'G10 L20 Z0')">
+                0
+              </button>
+            </div>
+            <div class="col-xs-3">
+              <div class="axis-position z-axis" data-name="wpos-z">0.000</div>
+            </div>
           </div>
         </div>
       </div>
@@ -253,53 +253,55 @@
         </div>
       </div>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="vendor/director/director.min.js"></script>
-    <script src="vendor/lodash/lodash.min.js"></script>
-    <script src="vendor/jquery/jquery-2.2.1.min.js"></script>
-    <script src="vendor/async/async.min.js"></script>
-    <script src="vendor/iframe-resizer/iframeResizer.contentWindow.min.js"></script>
-    <script src="vendor/js-cookie/js.cookie.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-      $('document').ready(function() {
-        var root = window;
-        root.cnc = {
-          router: null,
-          controller: null,
-          controllerType: Cookies.get('cnc.controllerType'),
-          port: Cookies.get('cnc.port'),
-          baudrate: Cookies.get('cnc.baudrate'),
-          connected: false
-        };
-        root.cnc.router = window.Router({
-          '/': function() {
-            if (root.cnc.connected) {
-              window.location = '#/workspace';
-            } else {
-              window.location = '#/connection';
-            }
-          },
-          '/workspace': function() {},
-          '/connection': function() {},
-          '/axes': function() {}
-        });
-        root.cnc.router.configure({
-          on: function() {
-            var route = window.location.hash.slice(2);
-            var views = $('[data-route]');
-            var view = views.filter('[data-route="' + route + '"]');
+  </div>
 
-            if (view.length) {
-              views.addClass('hidden');
-              view.removeClass('hidden');
-            }
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="vendor/director/director.min.js"></script>
+  <script src="vendor/lodash/lodash.min.js"></script>
+  <script src="vendor/jquery/jquery-2.2.1.min.js"></script>
+  <script src="vendor/async/async.min.js"></script>
+  <script src="vendor/iframe-resizer/iframeResizer.contentWindow.min.js"></script>
+  <script src="vendor/js-cookie/js.cookie.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script>
+    $('document').ready(function() {
+      var root = window;
+      root.cnc = {
+        router: null,
+        controller: null,
+        controllerType: Cookies.get('cnc.controllerType'),
+        port: Cookies.get('cnc.port'),
+        baudrate: Cookies.get('cnc.baudrate'),
+        connected: false
+      };
+      root.cnc.router = window.Router({
+        '/': function() {
+          if (root.cnc.connected) {
+            window.location = '#/workspace';
+          } else {
+            window.location = '#/connection';
           }
-        });
+        },
+        '/workspace': function() {},
+        '/connection': function() {},
+        '/axes': function() {}
       });
-    </script>
-    <script src="controller.js"></script>
-    <script src="app.js"></script>
+      root.cnc.router.configure({
+        on: function() {
+          var route = window.location.hash.slice(2);
+          var views = $('[data-route]');
+          var view = views.filter('[data-route="' + route + '"]');
+
+          if (view.length) {
+            views.addClass('hidden');
+            view.removeClass('hidden');
+          }
+        }
+      });
+    });
+  </script>
+  <script src="controller.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
