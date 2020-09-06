@@ -77,14 +77,15 @@
       <button type="button" class="btn btn-primary" data-name="btn-open">Open</button>
     </div>
   </div>
+
   <div class="hidden" data-route="axes">
     <div class="nav-panel">
       <div class="container-fluid">
         <div class="row no-gutter">
-          <div class="col-xs-2">
+          <div class="col-xs-3">
             <div class="active-state" data-name="active-state"></div>
           </div>
-          <div class="col-xs-4">
+          <div class="col-xs-9">
             <div class="gcode" data-name="gcode">gcode</div>
           </div>
         </div>
@@ -92,6 +93,24 @@
     </div>
     <div class="axis-position-row">
       <div class="container-fluid">
+
+
+        <div class="col-xs-1">
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1001.nc')">
+            1001
+          </button>
+        </div>
+        <div class="col-xs-1">
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1002.nc')">
+            1002
+          </button>
+        </div>
+        <div class="col-xs-1">
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1003.nc')">
+            1003
+          </button>
+        </div>
+
         <div class="row no-gutter">
           <div class="col-xs-2" data-name="mpos-label">
             MPos:
@@ -231,21 +250,6 @@
           <div class="col-xs-1">
             <button type="button" class="btn btn-default" title="Homing" onclick="cnc.controller.command('reset');cnc.controller.command('homing')">
               <i class="fa fa-home"></i>
-            </button>
-          </div>
-          <div class="col-xs-1">
-            <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1001.nc')">
-              1001
-            </button>
-          </div>
-          <div class="col-xs-1">
-            <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1002.nc')">
-              1002
-            </button>
-          </div>
-          <div class="col-xs-1">
-            <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1003.nc')">
-              1003
             </button>
           </div>
 
