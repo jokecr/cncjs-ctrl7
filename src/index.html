@@ -223,14 +223,6 @@
             </button>
           </div>
           <div class="col-xs-2">
-            <select class="form-control" data-name="select-distance">
-              <option>0.025</option>
-              <option>0.100</option>
-              <option>1.000</option>
-              <option>10.0</option>
-              <option>50.0</option>
-              <option>100.0</option>
-            </select>
           </div>
           <div class="col-xs-2">
             <button type="button" class="btn jog btn-default jog-x-plus x-axis" title="Move X+" onclick="cnc.sendMove('X+')">
@@ -299,6 +291,13 @@
           </div>
 
           <div class="col-xs-1">
+            <select class="form-control" data-name="select-distance">
+              <option>0.025</option>
+              <option>0.100</option>
+              <option>1.000</option>
+              <option>10.0</option>
+            </select>
+
           </div>
           <div class="col-xs-1">
             <button type="button" class="btn btn-default reload" title="Reload" onclick="location.reload();">
