@@ -14,7 +14,8 @@ $(function () {
     var msg = '';
     msgStack.push(str);
     msgStack.splice(0, msgStack.length - 20);
-    msg = msgStack.join(', ').split('G90, ');
+    msg = msgStack.join(',');
+    msg = msg.split('G90,');
     msg.splice(0, msg.length - 4);
     msg = msg.join('<br>G90 ');
     $('[data-route="axes"] [data-name="gcode"]').html(msg);
