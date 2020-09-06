@@ -6,7 +6,8 @@ $(function () {
   var busy = false;
   var prb = {};
   var bitSetterInit = {};
-  var tlo=0;
+  var step = 1.00;
+  var tlo = 0;
   controller.commandQueue = async.queue(function (task, commandDone) {
     console.log(task);
     busy = true;
@@ -339,6 +340,10 @@ $(function () {
       });
     }
   };
+  cnc.setStep = function (newStep) {
+    step = newStep;
+    $('[data-route="axes"] [data-name="step"]').text(step);
+  }
   cnc.sendMove = function (cmd) {
     var jog = function (params) {
       params = params || {};
@@ -355,7 +360,7 @@ $(function () {
       }).join(' ');
       controller.command('gcode', 'G0 ' + s);
     };
-    var distance = Number($('[data-route="axes"] select[data-name="select-distance"]').val()) || 0;
+    // var distance = Number($('[data-route="axes"] select[data-name="select-distance"]').val()) || 0;
     var fn = {
       'G28': function () {
         controller.command('gcode', 'G28');
@@ -387,56 +392,56 @@ $(function () {
       },
       'X-Y+': function () {
         jog({
-          X: -distance,
-          Y: distance
+          X: -step,
+          Y: step
         });
       },
       'X+Y+': function () {
         jog({
-          X: distance,
-          Y: distance
+          X: step,
+          Y: step
         });
       },
       'X-Y-': function () {
         jog({
-          X: -distance,
-          Y: -distance
+          X: -step,
+          Y: -step
         });
       },
       'X+Y-': function () {
         jog({
-          X: distance,
-          Y: -distance
+          X: step,
+          Y: -step
         });
       },
       'X-': function () {
         jog({
-          X: -distance
+          X: -step
         });
       },
       'X+': function () {
         jog({
-          X: distance
+          X: step
         });
       },
       'Y-': function () {
         jog({
-          Y: -distance
+          Y: -step
         });
       },
       'Y+': function () {
         jog({
-          Y: distance
+          Y: step
         });
       },
       'Z-': function () {
         jog({
-          Z: -distance
+          Z: -step
         });
       },
       'Z+': function () {
         jog({
-          Z: distance
+          Z: step
         });
       }
     } [cmd];
@@ -479,7 +484,6 @@ $(function () {
     }
     // $('[data-route="axes"] [data-name="gcode"]').html(htmlStr);
     $('[data-route="axes"] [data-name="stickout"]').html(`Stickout:${-68.575 - prb.z}<br>TLO:${tlo}`);
-
   });
   // GRBL reports position in units according to the $13 setting,
   // independent of the GCode in/mm parser state.
@@ -679,5 +683,5 @@ $(function () {
   //
   $('[data-route="axes"] [data-name="btn-dropdown"]').dropdown();
   $('[data-route="axes"] [data-name="active-state"]').text('Not connected');
-  $('[data-route="axes"] select[data-name="select-distance"]').val('1.000');
+  $('[data-route="axes"] [data-name="step"]').text('1.000');
 });

@@ -152,16 +152,17 @@
           </div>
         </div>
         <div class="col-xs-1 Params">
-          <button type="button" class="btn btn-default" title="Load" onclick="">
+          <div data-name="step"></div>
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.setStep(0.025)">
             0.025mm
           </button>
-          <button type="button" class="btn btn-default" title="Load" onclick="">
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.setStep(0.100)">
             0.100mm
           </button>
-          <button type="button" class="btn btn-default" title="Load" onclick="">
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.setStep(1.000)">
             1.000mm
           </button>
-          <button type="button" class="btn btn-default" title="Load" onclick="">
+          <button type="button" class="btn btn-default" title="Load" onclick="cnc.setStep(10.000)">
             10.000mm
           </button>
         </div>
