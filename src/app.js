@@ -342,6 +342,7 @@ $(function () {
   };
   cnc.setStep = function (newStep) {
     step = newStep;
+    console.log(`Step:${step}`)
     $('[data-route="axes"] [data-name="step"]').text(step);
   }
   cnc.sendMove = function (cmd) {
