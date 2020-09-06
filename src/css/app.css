@@ -1,14 +1,16 @@
 .ProgramColumn {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
+
 .btn.btn-zero {
-    color: black;
-    font-size: 17px;
-    font-weight: bold;
-    width: 100%;
+  color: black;
+  font-size: 17px;
+  font-weight: bold;
+  width: 100%;
 }
+
 .btn-default {
   color: hsla(0, 0%, 0%, 0.7);
   background-color: hsla(0, 0%, 60%, 0.5);
@@ -155,13 +157,14 @@
 }
 
 [data-route="axes"] .form-control {
-    font-size: 26px;
-    font-weight: bold;
-    height: 71px;
-    box-shadow: 1px 1px 0 2px hsla(0, 0%, 50%, 0.5);
-    background-color: hsl(0,0%,13%);
-    color: hsl(210,30%,40%);
+  font-size: 26px;
+  font-weight: bold;
+  height: 71px;
+  box-shadow: 1px 1px 0 2px hsla(0, 0%, 50%, 0.5);
+  background-color: hsl(0, 0%, 13%);
+  color: hsl(210, 30%, 40%);
 }
+
 .tinyLabel {
   font-size: small;
   background-color: hsl(0, 0%, 90%);
@@ -169,16 +172,33 @@
   border-radius: 3px;
 }
 
+.JogPad {
+  background: hsl(0, 0%, 20%);
+  box-shadow: inset 0 0 7px 3px hsla(0, 0%, 0%, 0.2), 2px 2px 0px 0px hsla(0, 0%, 50%, 0.5), -2px -2px 0px 0px hsl(0deg 0% 10%);
+  padding: 8px;
+  position: relative;
+  border-radius: 16px;
+  margin: 7px -15px;
+  overflow: hidden;
+}
+
 [data-route="axes"] .control-pad .btn.jog {
-  width: 100%;
+  /* width: 93%; */
   padding-left: 0;
   padding-right: 0;
-  height: 71px;
+  height: 72px;
+  overflow: hidden;
+  border-radius: 50%;
+  border-width: 2px;
+  box-shadow: 2px 4px 4px 6px hsla(0, 0%, 0%, 0.7), 0px 0px 0px 7px hsla(0, 0%, 75%, 1);
+  /* left: 25%; */
+  position: relative;
 }
 
 .combo-axis {
-    background-color: hsla(46, 100%, 48%, 1.0);
+  background-color: hsla(46, 100%, 48%, 1.0);
 }
+
 .x-axis {
   background-color: hsla(5, 100%, 70%, 1.0);
 }
