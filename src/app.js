@@ -461,10 +461,10 @@ $(function () {
       pending -= 1;
     }
     console.log('%i) %cR%c', pending, style, '', data);
-    show(data);
     if (data == 'ok') {
       return;
     }
+    show(data);
     // var str = $('[data-route="axes"] [data-name="gcode"]').html();
     // var a = str.split('<br>');
     // a.push(data);
