@@ -491,6 +491,7 @@ $(function () {
         tlo = result[1];
       }
     }
+    
     // $('[data-route="axes"] [data-name="gcode"]').html(htmlStr);
     $('[data-route="axes"] [data-name="stickout"]').html(`Stickout:${-68.575 - prb.z}<br>TLO:${tlo}`);
   });
