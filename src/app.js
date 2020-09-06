@@ -555,7 +555,11 @@ $(function () {
     } else {
       console.log('enable BUTTONS');
     }
-    $('[data-route="axes"] .control-pad').prop('disabled', !canClick);
+    if (!canClick) {
+      $('[data-route="axes"] .control-pad').addClass('disabled');
+    } else {
+      $('[data-route="axes"] .control-pad').removeClass('disabled');
+    }
     $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(activeState);
     $('[data-route="axes"] [data-name="mpos-label"]').text(mlabel);

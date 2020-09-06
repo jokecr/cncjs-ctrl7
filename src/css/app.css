@@ -156,12 +156,12 @@
   padding-right: 0;
 }
 
-.col-xs-8.control-pad:disabled {
+.col-xs-8.control-pad.disabled {
   background: hsl(0, 100%, 30%);
   box-shadow: 0 0 0 280px hsl(0, 100%, 10%);
 }
 
-:disabled .col-xs-6.JogPad {
+.disabled .col-xs-6.JogPad {
   background-color: transparent;
   opacity: 0.5;
 }
