@@ -17,7 +17,7 @@ $(function () {
     msg = msgStack.join(',');
     msg = msg.split(',G90');
     msg.splice(0, msg.length - 4);
-    msg = msg.join('<br>G90 ');
+    msg = msg.join('G90<br>');
     $('[data-route="axes"] [data-name="gcode"]').html(msg);
   }
   controller.commandQueue = async.queue(function (task, commandDone) {
