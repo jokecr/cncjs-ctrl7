@@ -9,18 +9,18 @@ $(function () {
   var msgStack = ['Init'];
   var step = 1.00;
   var tlo = 0;
+
   function show(str) {
-    msgStack = msgStack.push(str).splice(-1, 8);
+    msgStack.push(str);
+    msgStack = msgStack.splice(-1, 8);
     $('[data-route="axes"] [data-name="gcode"]').html(msgStack.join('<br>'));
   }
-
   controller.commandQueue = async.queue(function (task, commandDone) {
     console.log(task);
     busy = true;
     console.log(`Start:${task.mode}:${task.data}`);
     if (task.mode == 'notify') {
       show(task.data);
-
       commandDone();
     }
     if (task.mode == 'gcode') {
@@ -491,7 +491,6 @@ $(function () {
         tlo = result[1];
       }
     }
-    
     // $('[data-route="axes"] [data-name="gcode"]').html(htmlStr);
     $('[data-route="axes"] [data-name="stickout"]').html(`Stickout:${-68.575 - prb.z}<br>TLO:${tlo}`);
   });
