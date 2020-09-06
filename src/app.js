@@ -11,8 +11,8 @@ $(function () {
   var tlo = 0;
 
   function show(str) {
-    msgStack.push(str);
-    msgStack.splice(0, msgStack.length - 20);
+    msgStack.unshift(str);
+    msgStack.splice(20, msgStack.length - 20);
     $('[data-route="axes"] [data-name="gcode"]').html(msgStack.join(', '));
   }
   controller.commandQueue = async.queue(function (task, commandDone) {
