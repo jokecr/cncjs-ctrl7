@@ -108,7 +108,8 @@
   margin: 2px 2px;
   padding: 0 1em;
   border-radius: 3px;
-  box-shadow: inset 1px 1px 0px 2px hsla(0, 0%, 0%, 0.1), 1px 1px 0px 1px hsla(0, 0%, 100%, 0.15);
+  box-shadow: inset 3px 7px 0px -2px hsla(0, 0%, 0%, 0.2), inset 20px 20px 30px 0px hsla(0, 0%, 0%, 0.3), -2px -2px 0px 1px hsla(0, 0%, 65%, 0.7), 0px 0px 0px 3px hsla(0, 0%, 0%, 1);
+  text-shadow: 0px 0px 8px hsla(0, 0%, 100%, 1);
 }
 
 [data-route="axes"] .rotate-45deg {
@@ -204,16 +205,17 @@
 }
 
 [data-route="axes"] .control-pad .btn.jog {
-    padding: 0;
-    height: 47px;
-    overflow: hidden;
-    border-radius: 50%;
-    border-width: 2px;
-    box-shadow: 2px 4px 4px 6px hsla(0, 0%, 0%, 0.7), 0px 0px 0px 7px hsla(0, 0%, 75%, 1);
-    top: -3px;
-    position: relative;
-    margin: 10px -4px;
-    width: 47px;
+  padding: 0;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 24px;
+  border-width: 0;
+  box-shadow: inset 21px 36px 0px -32px hsla(0, 0%, 90%, 0.3), inset 20px 39px 40px -17px hsla(0, 0%, 0%, 0.3), inset 0px 0px 10px 0px hsla(0, 0%, 0%, 0.5), -1px -1px 0px 7px hsla(0, 0%, 0%, 0.7), 0px 0px 0px 7px hsla(0, 0%, 65%, 1);
+  /* top: -3px; */
+  position: relative;
+  margin: 10px -4px;
+  width: 100%;
+  color: hsla(0, 0%, 0%, 0.7);
 }
 
 .combo-axis {
@@ -235,16 +237,21 @@
 [data-route="axes"] .axis-position.x-axis {
   background-color: hsla(5, 100%, 25%, 0.5);
   color: hsla(5, 100%, 90%, 1.0);
+  text-shadow: 0px 0px 5px hsl(5, 100%, 50%), 0px 0px 10px hsl(5, 100%, 50%), 0px 0px 20px hsl(5, 100%, 50%);
 }
 
 [data-route="axes"] .axis-position.y-axis {
   background-color: hsla(120, 100%, 25%, 0.5);
   color: hsla(120, 100%, 90%, 1.0);
+  background-color: hsla(120, 100%, 25%, 0.5);
+  color: hsla(120, 100%, 90%, 1.0);
+  text-shadow: 0px 0px 5px hsl(120, 100%, 50%), 0px 0px 10px hsl(120, 100%, 50%), 0px 0px 20px hsl(120, 100%, 50%);
 }
 
 [data-route="axes"] .axis-position.z-axis {
   background-color: hsla(220, 100%, 25%, 0.5);
   color: hsla(220, 100%, 90%, 1.0);
+  text-shadow: 0px 0px 5px hsl(220, 100%, 50%), 0px 0px 10px hsl(220, 100%, 50%), 0px 0px 20px hsl(220, 100%, 50%);
 }
 
 .btn-default:focus {
