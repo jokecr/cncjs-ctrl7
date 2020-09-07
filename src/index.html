@@ -79,18 +79,6 @@
   </div>
 
   <div class="hidden" data-route="axes">
-    <div class="nav-panel">
-      <div class="container-fluid">
-        <div class="row no-gutter">
-          <div class="col-xs-3">
-            <div class="active-state" data-name="active-state"></div>
-          </div>
-          <div class="col-xs-9">
-            <div class="gcode" data-name="gcode">gcode</div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="axis-position-row">
       <div class="col-xs-2 ProgramColumn">
         <button type="button" class="btn btn-default" title="Load" onclick="cnc.controller.command('watchdir:load', '1001.nc')">
@@ -242,6 +230,19 @@
         </div>
       </div>
     </div>
+    <div class="nav-panel">
+      <div class="container-fluid">
+        <div class="row no-gutter">
+          <div class="col-xs-3">
+            <div class="active-state" data-name="active-state"></div>
+          </div>
+          <div class="col-xs-9">
+            <div class="gcode" data-name="gcode">gcode</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <script src="/socket.io/socket.io.js"></script>
