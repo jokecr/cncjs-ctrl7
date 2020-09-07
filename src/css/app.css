@@ -18,7 +18,10 @@
   font-size: x-large;
   font-weight: bold;
 }
-
+.btn-default.selected {
+    background-color: hsl(190,100%,50%);
+    border-color: hsl(190,50%,80%);
+}
 [data-route="workspace"] {
   padding: 10px;
 }
