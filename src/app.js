@@ -491,11 +491,11 @@ $(function () {
     if (r !== null) {
       limits.x = r[1];
     }
-    let r = /^\$131=([09.]+)/i.exec(data);
+    r = /^\$131=([09.]+)/i.exec(data);
     if (r !== null) {
       limits.y = r[1];
     }
-    let r = /^\$132=([09.]+)/i.exec(data);
+    r = /^\$132=([09.]+)/i.exec(data);
     if (r !== null) {
       limits.z = r[1];
     }
