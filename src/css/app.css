@@ -65,7 +65,7 @@
 
 [data-route="axes"] .active-state {
   background-color: hsla(0, 0%, 0%, 0.5);
-  height: 48px;
+  height: 60px;
   font-size: x-large;
   padding: 0 1em;
   border-radius: 3px;
@@ -74,7 +74,7 @@
 
 [data-route="axes"] .gcode {
   background-color: hsla(0, 0%, 0%, 0.5);
-  height: 48px;
+  height: 60px;
   font-size: x-small;
   padding: 0 1em;
   border-radius: 3px;
