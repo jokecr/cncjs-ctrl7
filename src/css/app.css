@@ -18,10 +18,12 @@
   font-size: x-large;
   font-weight: bold;
 }
+
 .btn-default.selected {
-    background-color: hsl(190,100%,50%);
-    border-color: hsl(190,50%,80%);
+  background-color: hsl(190, 100%, 50%);
+  border-color: hsl(190, 50%, 80%);
 }
+
 [data-route="workspace"] {
   padding: 10px;
 }
@@ -36,7 +38,7 @@
   bottom: 0;
   /* position: absolute; */
   top: 0;
-  width:800px;
+  width: 800px;
 }
 
 [data-route="axes"]>* {
@@ -84,6 +86,10 @@
   border-radius: 3px;
   box-shadow: inset 1px 1px 0px 2px hsla(0, 0%, 0%, 0.1), 1px 1px 0px 1px hsla(0, 0%, 100%, 0.15);
   overflow: hidden;
+}
+
+.Params {
+  padding: 18px 14px;
 }
 
 [data-route="axes"] .axis-label {
