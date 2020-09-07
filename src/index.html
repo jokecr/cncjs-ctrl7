@@ -151,6 +151,19 @@
             <div class="axis-position z-axis" data-name="wpos-z">0.000</div>
           </div>
         </div>
+
+        <div class="col-xs-2 Presets">
+          <button type="button" class="btn jog btn-default jog-y-zero y-axis" title="Move To Y Zero (G0 Y0)" onclick="cnc.sendMove('Y0')">
+            Y0
+          </button>
+          <button type="button" class="btn jog btn-default z-axis" title="Move Z Safe" onclick="cnc.controller.command('gcode', 'G53 G0 z-10')">
+            Safe Z
+          </button>
+          <button type="button" class="btn jog btn-default jog-z-zero z-axis" title="Move To Z Zero (G0 Z0)" onclick="cnc.sendMove('Z0')">
+            Z0
+          </button>
+        </div>
+
         <div class="col-xs-6 Params">
           <button type="button" data-name="step0025" class="btn btn-default" onclick="cnc.setStep(0.025)">
             0.025mm
@@ -163,18 +176,6 @@
           </button>
           <button type="button" data-name="step10000" class="btn btn-default" onclick="cnc.setStep(10.000)">
             10.000mm
-          </button>
-        </div>
-
-        <div class="col-xs-6 Presets">
-          <button type="button" class="btn jog btn-default jog-y-zero y-axis" title="Move To Y Zero (G0 Y0)" onclick="cnc.sendMove('Y0')">
-            Y0
-          </button>
-          <button type="button" class="btn jog btn-default z-axis" title="Move Z Safe" onclick="cnc.controller.command('gcode', 'G53 G0 z-10')">
-            Safe Z
-          </button>
-          <button type="button" class="btn jog btn-default jog-z-zero z-axis" title="Move To Z Zero (G0 Z0)" onclick="cnc.sendMove('Z0')">
-            Z0
           </button>
         </div>
 
