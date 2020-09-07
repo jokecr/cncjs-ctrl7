@@ -487,15 +487,15 @@ $(function () {
     if (data == 'ok') {
       return;
     }
-    let r = /^\$130=([09.]+)/i.exec(data);
+    let r = /^\$130=([0-9.]+)/i.exec(data);
     if (r !== null) {
       limits.x = r[1];
     }
-    r = /^\$131=([09.]+)/i.exec(data);
+    r = /^\$131=([0-9.]+)/i.exec(data);
     if (r !== null) {
       limits.y = r[1];
     }
-    r = /^\$132=([09.]+)/i.exec(data);
+    r = /^\$132=([0-9.]+)/i.exec(data);
     if (r !== null) {
       limits.z = r[1];
     }
