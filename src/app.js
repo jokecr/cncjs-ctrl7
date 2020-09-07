@@ -4,6 +4,11 @@ $(function () {
   var controller = cnc.controller;
   var pending = 0;
   var busy = false;
+  var limits = {
+    x: 1,
+    y: 1,
+    z: 1
+  };
   var prb = {};
   var bitSetterInit = {};
   var msgStack = ['Init'];
@@ -482,6 +487,18 @@ $(function () {
     if (data == 'ok') {
       return;
     }
+    let r = /^\$130=([09.]+)/i.exec(data);
+    if (r !== null) {
+      limits.x = r[1];
+    }
+    let r = /^\$131=([09.]+)/i.exec(data);
+    if (r !== null) {
+      limits.y = r[1];
+    }
+    let r = /^\$132=([09.]+)/i.exec(data);
+    if (r !== null) {
+      limits.z = r[1];
+    }
     show(data);
     // var str = $('[data-route="axes"] [data-name="gcode"]').html();
     // var a = str.split('<br>');
@@ -542,7 +559,7 @@ $(function () {
   var savedGrblState;
 
   function renderGrblState(data) {
-console.dir(data);
+    console.dir(data);
     var status = data.status || {};
     var activeState = status.activeState;
     var mpos = status.mpos;
@@ -591,7 +608,7 @@ console.dir(data);
     $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(activeState);
     $('[data-route="axes"] [data-name="mpos-label"]').text(mlabel);
-    $('[data-route="axes"] [data-name="mpos-x"]').text(mpos.x);
+    $('[data-route="axes"] [data-name="mpos-x"]').text(mpos.x + `${Math.floor(mpos.x/limits.x*1000)/10.0}%`);
     $('[data-route="axes"] [data-name="mpos-y"]').text(mpos.y);
     $('[data-route="axes"] [data-name="mpos-z"]').text(mpos.z);
     $('[data-route="axes"] [data-name="wpos-label"]').text(wlabel);
