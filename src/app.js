@@ -725,4 +725,5 @@ $(function () {
   $('[data-route="axes"] [data-name="btn-dropdown"]').dropdown();
   $('[data-route="axes"] [data-name="active-state"]').text('Not connected');
   $('[data-route="axes"] [data-name="step"]').text('1.000');
+  $('[data-route="axes"] [data-name="step1000"]').addClass('selected');
 });
