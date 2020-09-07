@@ -608,9 +608,9 @@ $(function () {
     $('[data-route="axes"] .control-pad .btn').prop('disabled', !canClick);
     $('[data-route="axes"] [data-name="active-state"]').text(activeState);
     $('[data-route="axes"] [data-name="mpos-label"]').text(mlabel);
-    $('[data-route="axes"] [data-name="mpos-x"]').text(mpos.x + `${Math.floor(mpos.x/limits.x*1000)/10.0}%`);
-    $('[data-route="axes"] [data-name="mpos-y"]').text(mpos.y);
-    $('[data-route="axes"] [data-name="mpos-z"]').text(mpos.z);
+    $('[data-route="axes"] [data-name="mpos-x"]').text(mpos.x + `<br>${Math.floor(-mpos.x/limits.x*1000)/10.0}%`);
+    $('[data-route="axes"] [data-name="mpos-y"]').text(mpos.y + `<br>${Math.floor(-mpos.y/limits.y*1000)/10.0}%`);
+    $('[data-route="axes"] [data-name="mpos-z"]').text(mpos.z + `<br>${Math.floor(-mpos.z/limits.z*1000)/10.0}%`);
     $('[data-route="axes"] [data-name="wpos-label"]').text(wlabel);
     $('[data-route="axes"] [data-name="wpos-x"]').text(wpos.x);
     $('[data-route="axes"] [data-name="wpos-y"]').text(wpos.y);
