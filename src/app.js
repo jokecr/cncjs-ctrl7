@@ -542,6 +542,7 @@ $(function () {
   var savedGrblState;
 
   function renderGrblState(data) {
+console.dir(data);
     var status = data.status || {};
     var activeState = status.activeState;
     var mpos = status.mpos;
