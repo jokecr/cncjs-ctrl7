@@ -83,6 +83,7 @@
   padding: 0 1em;
   border-radius: 3px;
   box-shadow: inset 1px 1px 0px 2px hsla(0, 0%, 0%, 0.1), 1px 1px 0px 1px hsla(0, 0%, 100%, 0.15);
+  overflow: hidden;
 }
 
 [data-route="axes"] .axis-label {
