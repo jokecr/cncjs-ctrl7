@@ -559,7 +559,7 @@ $(function () {
   var savedGrblState;
 
   function renderGrblState(data) {
-    console.dir(data);
+    // console.dir(data);
     var status = data.status || {};
     var activeState = status.activeState;
     var mpos = status.mpos;
@@ -596,9 +596,9 @@ $(function () {
     wpos.y = (wpos.y * factor).toFixed(digits);
     wpos.z = (wpos.z * factor).toFixed(digits);
     if (!canClick) {
-      console.log('DISABLE BUTTONS');
+      // console.log('DISABLE BUTTONS');
     } else {
-      console.log('enable BUTTONS');
+      // console.log('enable BUTTONS');
     }
     if (!canClick) {
       $('[data-route="axes"] .control-pad').addClass('disabled');

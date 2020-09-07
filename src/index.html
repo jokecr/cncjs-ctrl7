@@ -153,15 +153,20 @@
         </div>
 
         <div class="col-xs-2 Presets">
+          <button type="button" class="btn jog btn-default jog-x-zero x-axis" title="Move To X Zero (G0 X0)" onclick="cnc.sendMove('X0')">
+            X0
+          </button>
+
           <button type="button" class="btn jog btn-default jog-y-zero y-axis" title="Move To Y Zero (G0 Y0)" onclick="cnc.sendMove('Y0')">
             Y0
-          </button>
-          <button type="button" class="btn jog btn-default z-axis" title="Move Z Safe" onclick="cnc.controller.command('gcode', 'G53 G0 z-10')">
-            Safe Z
           </button>
           <button type="button" class="btn jog btn-default jog-z-zero z-axis" title="Move To Z Zero (G0 Z0)" onclick="cnc.sendMove('Z0')">
             Z0
           </button>
+          <button type="button" class="btn jog btn-default z-axis" title="Move Z Safe" onclick="cnc.controller.command('gcode', 'G53 G0 z-10')">
+            Up
+          </button>
+
         </div>
 
         <div class="col-xs-4 Params">
