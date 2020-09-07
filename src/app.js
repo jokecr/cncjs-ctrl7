@@ -355,7 +355,20 @@ $(function () {
   cnc.setStep = function (newStep) {
     step = newStep;
     console.log(`Step:${step}`)
+    $('div.Params>button').removeClass('selected');
     $('[data-route="axes"] [data-name="step"]').text(step);
+    if (step == 0.025) {
+      $('[data-route="axes"] [data-name="step0025"]').addClass('selected');
+    }
+    if (step == 0.1) {
+      $('[data-route="axes"] [data-name="step0100"]').addClass('selected');
+    }
+    if (step == 1.0) {
+      $('[data-route="axes"] [data-name="step1000"]').addClass('selected');
+    }
+    if (step == 10.0) {
+      $('[data-route="axes"] [data-name="step10000"]').addClass('selected');
+    }
   }
   cnc.sendMove = function (cmd) {
     var jog = function (params) {
