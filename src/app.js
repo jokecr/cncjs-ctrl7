@@ -784,7 +784,7 @@ var opts = {
 //Creates webcam instance
 var Webcam = NodeWebcam.create(opts);
 //Also available for quick use
-function capture() {
+root.capture = () => {
   NodeWebcam.capture("test_picture", opts, function (err, data) {
     var image = "<img src='" + data + "'>";
     $('[data-name="webcam"]').html(image);
