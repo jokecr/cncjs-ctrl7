@@ -565,6 +565,45 @@ $(function () {
       document.exitFullscreen();
     }
   }
+  var NodeWebcam = require("node-webcam");
+  var opts = {
+    //Picture related
+    width: 720,
+    height: 720,
+    quality: 100,
+    // Number of frames to capture
+    frames: 60,
+    //Delay in seconds to take shot
+    delay: 0,
+    //Save shots in memory
+    saveShots: true,
+    // [jpeg, png] support varies
+    // Webcam.OutputTypes
+    output: "jpeg",
+    //Which camera to use
+    //Use Webcam.list() for results
+    //false for default device
+    device: false,
+    // [location, buffer, base64]
+    // Webcam.CallbackReturnTypes
+    callbackReturn: "base64",
+    //Logging
+    verbose: false
+  };
+  //Creates webcam instance
+  var Webcam = NodeWebcam.create(opts);
+  //Also available for quick use
+  root.capture = () => {
+    NodeWebcam.capture("test_picture", opts, function (err, data) {
+      var image = "<img src='" + data + "'>";
+      $('[data-name="webcam"]').html(image);
+    });
+  }
+  // Webcam.list(function (list) {
+  //   var anotherCam = NodeWebcam.create({
+  //     device: list[0]
+  //   });
+  // });
 
   function renderGrblState(data) {
     // console.dir(data);
@@ -756,42 +795,3 @@ $(function () {
   $('[data-route="axes"] [data-name="step"]').text('1.000');
   $('[data-route="axes"] [data-name="step1000"]').addClass('selected');
 });
-var NodeWebcam = require("node-webcam");
-var opts = {
-  //Picture related
-  width: 720,
-  height: 720,
-  quality: 100,
-  // Number of frames to capture
-  frames: 60,
-  //Delay in seconds to take shot
-  delay: 0,
-  //Save shots in memory
-  saveShots: true,
-  // [jpeg, png] support varies
-  // Webcam.OutputTypes
-  output: "jpeg",
-  //Which camera to use
-  //Use Webcam.list() for results
-  //false for default device
-  device: false,
-  // [location, buffer, base64]
-  // Webcam.CallbackReturnTypes
-  callbackReturn: "base64",
-  //Logging
-  verbose: false
-};
-//Creates webcam instance
-var Webcam = NodeWebcam.create(opts);
-//Also available for quick use
-root.capture = () => {
-  NodeWebcam.capture("test_picture", opts, function (err, data) {
-    var image = "<img src='" + data + "'>";
-    $('[data-name="webcam"]').html(image);
-  });
-}
-// Webcam.list(function (list) {
-//   var anotherCam = NodeWebcam.create({
-//     device: list[0]
-//   });
-// });
