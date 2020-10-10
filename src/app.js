@@ -558,7 +558,7 @@ $(function () {
   // This is a copy of the Grbl:state report that came in before the Grbl:settings report
   var savedGrblState;
 
-  function toggleFullScreen() {
+root.toggleFullScreen() {
     var elem = document.documentElement;
     if (Document.fullscreenElement === null) {
       elem.requestFullscreen();
