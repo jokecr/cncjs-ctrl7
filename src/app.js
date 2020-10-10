@@ -562,7 +562,7 @@ $(function () {
     if (document.fullscreenElement === null) {
       elem.requestFullscreen();
     } else {
-      elem.exitFullscreen();
+      document.exitFullscreen();
     }
   }
 
