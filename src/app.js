@@ -558,6 +558,15 @@ $(function () {
   // This is a copy of the Grbl:state report that came in before the Grbl:settings report
   var savedGrblState;
 
+  function toggleFullScreen() {
+    var elem = document.documentElement;
+    if (Document.fullscreenElement === null) {
+      elem.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
   function renderGrblState(data) {
     // console.dir(data);
     var status = data.status || {};
