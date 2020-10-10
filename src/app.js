@@ -560,11 +560,11 @@ $(function () {
 
 root.toggleFullScreen=()=> {
     var elem = document.documentElement;
-    if (Document.fullscreenElement === null) {
+    // if (Document.fullscreenElement === null) {
       elem.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
+    // } else {
+    //   elem.exitFullscreen();
+    // }
   }
 
   function renderGrblState(data) {
