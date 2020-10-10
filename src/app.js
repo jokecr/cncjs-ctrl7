@@ -1,3 +1,4 @@
+var NodeWebcam = require("node-webcam");
 $(function () {
   var root = window;
   var cnc = root.cnc || {};
@@ -565,7 +566,6 @@ $(function () {
       document.exitFullscreen();
     }
   }
-  var NodeWebcam = require("node-webcam");
   var opts = {
     //Picture related
     width: 720,
@@ -604,7 +604,6 @@ $(function () {
   //     device: list[0]
   //   });
   // });
-
   function renderGrblState(data) {
     // console.dir(data);
     var status = data.status || {};
