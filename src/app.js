@@ -4,6 +4,7 @@ $(function () {
   var controller = cnc.controller;
   var pending = 0;
   var busy = false;
+  var loopId;
   var limits = {
     x: 1,
     y: 1,
@@ -11,6 +12,7 @@ $(function () {
   };
   var jogVec = [0, 0, 0];
   var jogReady = true;
+  var mode = 'step';
   var prb = {};
   var bitSetterInit = {};
   var msgStack = ['Init'];
@@ -377,25 +379,72 @@ $(function () {
       $('[data-route="axes"] [data-name="step10000"]').addClass('selected');
     }
   }
-  cnc.jog = function (vec) {
+  cnc.stepMode = function () {
+    mode = 'step';
+    $('[data-route="axes"] [data-name="jogMode"]').removeClass('selected');
+    $('[data-route="axes"] [data-name="stepMode"]').addClass('selected');
+  };
+  cnc.jogMode = function () {
+    mode = 'jog';
+    $('[data-route="axes"] [data-name="jogMode"]').addClass('selected');
+    $('[data-route="axes"] [data-name="stepMode"]').removeClass('selected');
+  };
+  cnc.jog = function (cmd) {
+    if (mode != 'jog') {
+      return;
+    }
+    switch (cmd) {
+    case 'X+':
+      vec = [1, 0, 0];
+      break;
+    case 'X-':
+      vec = [-1, 0, 0];
+      break;
+    case 'Y+':
+      vec = [0, 1, 0];
+      break;
+    case 'Y-':
+      vec = [0, -1, 0];
+      break;
+    case 'Z+':
+      vec = [0, 0, 1];
+      break;
+    case 'Z-':
+      vec = [0, 0, -1];
+      break;
+    }
     // socket_write(`$J=G91 G21 ${axis}${direction}${jogDistance} F${jogSpeed}`);
     // socket_write("\x85");
     jogVec = jogVec.map((n, i) => n + vec[i]);
     console.log(jogVec);
+    cnc.jogLoop();
   };
   cnc.jogLoop = function () {
+    clearTimeout(loopId);
+    if (mode != 'jog') {
+      jogStop();
+      return;
+    }
+    if (jogVec[0] == 0 && jogVec[1] == 0 && jogVec[2] == 0) {
+      return;
+    }
     if (jogReady) {
       jogReady = false;
       jogSpeed = 1;
       controller.command('gcode', `$J=G91 G21 X${jogVec[0]} Y${jogVec[1]} Z${jogVec[2]} F${jogSpeed}`);
     }
-    setTimeout(jogLoop, 100);
+    jogVec = jogVec.map(n => n * 0.1);
+    loopId = setTimeout(jogLoop, 100);
   }
   cnc.jogStop = function () {
     jogVec = [0, 0, 0];
     controller.command('gcode', "\x85");
   }
   cnc.sendMove = function (cmd) {
+    if (mode == 'jog') {
+      cnc.jog(cmd)
+      return;
+    }
     var jog = function (params) {
       params = params || {};
       var s = _.map(params, function (value, letter) {
@@ -439,30 +488,6 @@ $(function () {
       'Z0': function () {
         move({
           Z: 0
-        });
-      },
-      'X-Y+': function () {
-        jog({
-          X: -step,
-          Y: step
-        });
-      },
-      'X+Y+': function () {
-        jog({
-          X: step,
-          Y: step
-        });
-      },
-      'X-Y-': function () {
-        jog({
-          X: -step,
-          Y: -step
-        });
-      },
-      'X+Y-': function () {
-        jog({
-          X: step,
-          Y: -step
         });
       },
       'X-': function () {
