@@ -434,7 +434,7 @@ $(function () {
       controller.command('gcode', `$J=G91 G21 X${jogVec[0]} Y${jogVec[1]} Z${jogVec[2]} F${jogSpeed}`);
     }
     jogVec = jogVec.map(n => n * 0.1);
-    loopId = setTimeout(jogLoop, 100);
+    loopId = setTimeout(cnc.jogLoop, 100);
   }
   cnc.jogStop = function () {
     jogVec = [0, 0, 0];
