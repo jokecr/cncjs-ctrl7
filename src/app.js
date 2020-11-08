@@ -420,21 +420,22 @@ $(function () {
     cnc.jogLoop();
   };
   cnc.jogLoop = function () {
-    clearTimeout(loopId);
-    if (mode != 'jog') {
-      jogStop();
-      return;
-    }
-    if (jogVec[0] == 0 && jogVec[1] == 0 && jogVec[2] == 0) {
-      return;
-    }
-    if (jogReady) {
-      jogReady = false;
-      jogSpeed = 1;
-      controller.command('gcode', `$J=G91 G21 X${jogVec[0]} Y${jogVec[1]} Z${jogVec[2]} F${jogSpeed}`);
-    }
-    jogVec = jogVec.map(n => n * 0.1);
-    loopId = setTimeout(cnc.jogLoop, 100);
+    // clearTimeout(loopId);
+    // console.log('JogLoop');
+    // if (mode != 'jog') {
+    //   jogStop();
+    //   return;
+    // }
+    // if (jogVec[0] == 0 && jogVec[1] == 0 && jogVec[2] == 0) {
+    //   return;
+    // }
+    // if (jogReady) {
+    //   jogReady = false;
+    //   jogSpeed = 1;
+    //   controller.command('gcode', `$J=G91 G21 X${jogVec[0]} Y${jogVec[1]} Z${jogVec[2]} F${jogSpeed}`);
+    // }
+    // jogVec = jogVec.map(n => n * 0.1);
+    // loopId = setTimeout(cnc.jogLoop, 1000);
   }
   cnc.jogStop = function () {
     jogVec = [0, 0, 0];
