@@ -190,21 +190,21 @@
             <div class="col-xs-3">
             </div>
             <div class="col-xs-3">
-              <button type="button" class="btn jog btn-default jog-y-plus y-axis" title="Move Y+" onclick="cnc.sendMove('Y+')">
+              <button type="button" class="btn jog btn-default jog-y-plus y-axis" title="Move Y+" onmousedown="cnc.jog([0,1,0])" onmouseup="cnc.jogStop()"  onclick="cnc.sendMove('Y+')">
                 Y+
               </button>
             </div>
             <div class="col-xs-3">
             </div>
             <div class="col-xs-3">
-              <button type="button" class="btn jog btn-default jog-z-plus z-axis" title="Move Z+" onclick="cnc.sendMove('Z+')">
+              <button type="button" class="btn jog btn-default jog-z-plus z-axis" title="Move Z+" onmousedown="cnc.jog([0,0,1])" onmouseup="cnc.jogStop()" onclick="cnc.sendMove('Z+')">
                 Z+
               </button>
             </div>
           </div>
           <div class="row no-gutter">
             <div class="col-xs-3">
-              <button type="button" class="btn jog btn-default jog-x-minus x-axis" title="Move X-" onclick="cnc.sendMove('X-')">
+              <button type="button" class="btn jog btn-default jog-x-minus x-axis" title="Move X-" onmousedown="cnc.jog([-1,0,0])" onmouseup="cnc.jogStop()" onclick="cnc.sendMove('X-')">
                 X-
               </button>
             </div>
@@ -212,7 +212,7 @@
             <div class="col-xs-3">
             </div>
             <div class="col-xs-3">
-              <button type="button" class="btn jog btn-default jog-x-plus x-axis" title="Move X+" onclick="cnc.sendMove('X+')">
+              <button type="button" class="btn jog btn-default jog-x-plus x-axis" title="Move X+" onmousedown="cnc.jog([1,0,0])" onmouseup="cnc.jogStop()" onclick="cnc.sendMove('X+')">
                 X+
               </button>
             </div>
@@ -224,7 +224,7 @@
             </div>
 
             <div class="col-xs-3">
-              <button type="button" class="btn jog btn-default jog-y-minus y-axis" title="Move Y-" onclick="cnc.sendMove('Y-')">
+              <button type="button" class="btn jog btn-default jog-y-minus y-axis" title="Move Y-" onmousedown="cnc.jog([0,-1,0])" onmouseup="cnc.jogStop()" onclick="cnc.sendMove('Y-')">
                 Y-
               </button>
             </div>
@@ -234,25 +234,28 @@
             <div class="col-xs-3">
             </div>
             <div class="col-xs-3">
-              <button type="button" class="btn jog btn-default jog-z-minus z-axis" title="Move Z-" onclick="cnc.sendMove('Z-')">
+              <button type="button" class="btn jog btn-default jog-z-minus z-axis" title="Move Z-" onmousedown="cnc.jog([0,0,-1])" onmouseup="cnc.jogStop()" onclick="cnc.sendMove('Z-')">
                 Z-
               </button>
             </div>
+          </div>
 
-          </div>
-        </div>
-      </div>
-      <div class="nav-panel">
-        <div class="container-fluid">
           <div class="row no-gutter">
-            <div class="col-xs-3">
-              <div class="active-state" data-name="active-state"></div>
+            <div class="col-xs-6">
+              <button type="button" class="btn jog btn-default jog-z-minus z-axis" title="Step" onclick="cnc.stepMode()">
+                Step
+              </button>
             </div>
-            <div class="col-xs-9">
-              <div class="gcode" data-name="gcode">gcode</div>
+            <div class="col-xs-6">
+              <button type="button" class="btn jog btn-default jog-z-minus z-axis" title="Jog" onclick="cnc.jogMode()">>
+                Jog
+              </button>
             </div>
-          </div>
         </div>
+
+
+        </div>
+
       </div>
     </div>
 
@@ -306,5 +309,4 @@
   <script src="controller.js"></script>
   <script src="app.js"></script>
 </body>
-
 </html>

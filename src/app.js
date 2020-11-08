@@ -9,6 +9,8 @@ $(function () {
     y: 1,
     z: 1
   };
+  var jogVec = [0, 0, 0];
+  var jogReady = true;
   var prb = {};
   var bitSetterInit = {};
   var msgStack = ['Init'];
@@ -375,6 +377,24 @@ $(function () {
       $('[data-route="axes"] [data-name="step10000"]').addClass('selected');
     }
   }
+  cnc.jog = function (vec) {
+    // socket_write(`$J=G91 G21 ${axis}${direction}${jogDistance} F${jogSpeed}`);
+    // socket_write("\x85");
+    jogVec = jogVec.map((n, i) => n + vec[i]);
+    console.log(jogVec);
+  };
+  cnc.jogLoop = function () {
+    if (jogReady) {
+      jogReady = false;
+      jogSpeed = 1;
+      controller.command('gcode', `$J=G91 G21 X${jogVec[0]} Y${jogVec[1]} Z${jogVec[2]} F${jogSpeed}`);
+    }
+    setTimeout(jogLoop, 100);
+  }
+  cnc.jogStop = function () {
+    jogVec = [0, 0, 0];
+    controller.command('gcode', "\x85");
+  }
   cnc.sendMove = function (cmd) {
     var jog = function (params) {
       params = params || {};
@@ -481,6 +501,7 @@ $(function () {
   controller.on('serialport:read', function (data) {
     var style = 'font-weight: bold; line-height: 20px; padding: 2px 4px; border: 1px solid; color: #222; background: #F5F5F5';
     if (data == 'ok') {
+      jogReady = true;
       pending -= 1;
     }
     console.log('%i) %cR%c', pending, style, '', data);
